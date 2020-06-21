@@ -25,7 +25,7 @@ SECRET_KEY = 'a6=%^8j&9e$dc!ep7n_u3ucf6nbh(0^wnf%65=*q4z@rkk^%qr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['pokharel.herokuapp.com']
+ALLOWED_HOSTS = ['pokharel.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -116,6 +116,11 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
-
+STATICFILES_DIRS=[
+os.path.join(BASE_DIR, 'static')
+]
+# https://docs.djangoproject.com/en/2.2/howto/static-files/
+STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 STATIC_URL = '/static/'
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+MEDIA_URL='/media/'
