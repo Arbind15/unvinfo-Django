@@ -25,7 +25,7 @@ SECRET_KEY = 'a6=%^8j&9e$dc!ep7n_u3ucf6nbh(0^wnf%65=*q4z@rkk^%qr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['pokharel.herokuapp.com']
 
 
 # Application definition
