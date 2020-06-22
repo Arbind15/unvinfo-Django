@@ -1,0 +1,1 @@
+var num=20;function Scrolled(){if((window.innerHeight+window.scrollY)>=document.body.offsetHeight){alert(num);num=num+10;}};

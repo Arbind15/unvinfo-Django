@@ -1,0 +1,1 @@
+function Scrolled(){if((window.innerHeight+window.scrollY)>=document.body.offsetHeight){$('table tr:last').css("background-color","yellow");}};

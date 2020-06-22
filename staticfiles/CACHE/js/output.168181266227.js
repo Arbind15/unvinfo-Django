@@ -1,0 +1,1 @@
+function Scrolled(){if((window.innerHeight+window.scrollY)>=document.body.offsetHeight){var last_obj=$('table tr:last');var last_indx=last_obj.td.indexOf();alert(last_indx);}};
