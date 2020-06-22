@@ -37,9 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'compressor',
 ]
 
 MIDDLEWARE = [
+
+    'django.middleware.gzip.GZipMiddleware',
+    'htmlmin.middleware.HtmlMinifyMiddleware',
+    'htmlmin.middleware.MarkRequestMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -101,6 +107,13 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:8000',
+    }
+}
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -124,3 +137,26 @@ STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 STATIC_URL = '/static/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+
+    # Add this
+    'compressor.finders.CompressorFinder',
+)
+
+
+COMPRESS_ENABLED = True
+COMPRESS_CSS_HASHING_METHOD = 'content'
+COMPRESS_FILTERS = {
+    'css':[
+        'compressor.filters.css_default.CssAbsoluteFilter',
+        'compressor.filters.cssmin.rCSSMinFilter',
+    ],
+    'js':[
+        'compressor.filters.jsmin.JSMinFilter',
+    ]
+}
+HTML_MINIFY = True
+KEEP_COMMENTS_ON_MINIFYING = False

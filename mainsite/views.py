@@ -4,8 +4,8 @@ import csv
 
 def home(request):
     # for deployment
-    # with open('media/data.csv', 'r') as csv_file:
-    with open('media/data.csv','r') as csv_file:
+    with open('media/data.csv', 'r') as csv_file:
+    # with open('media/data.csv','r',encoding="mbcs") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         num=1
         lst=[]
