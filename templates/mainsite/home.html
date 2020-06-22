@@ -15,30 +15,27 @@
 <body>
     <div class="container" style="
      text-align: center!important;">
+            <div>
+                <table class="table table-hover table-responsive" style="margin-left: auto!important; margin-right: auto!important;">
+                    <thead style="background-color: darkgray!important;">
+                        <tr class="bg-dark text-white">
+                            <th scope="col">S.No:</th>
+                            <th scope="col" style="text-align: left!important;">University</th>
+                            <th scope="col" style="text-align: left!important;">Link</th>
+                        </tr>
+                    </thead>
 
-        <table class="table table-hover" style="margin-left: auto!important; margin-right: auto!important;">
-            <thead style="background-color: darkgray!important;">
-                <tr>
-                    <th scope="col">S.No:</th>
-                    <th scope="col" style="text-align: left!important;">University</th>
-                    <th scope="col" style="text-align: left!important;">Link</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                {%for itm in list%}
-                    <tr>
-                        <th scope="row">{{ itm.3 }}</th>
-                        <td scope="row" style="text-align: left!important;">{{ itm.1 }}</td>
-                        <td scope="row" style="text-align: left!important;"><a href="{{ itm.2 }}" target="_blank">{{ itm.2 }}</a></td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-
-
-
-        </table>
-
+                    <tbody>
+                        {%for itm in list%}
+                            <tr>
+                                <th scope="row">{{ itm.3 }}</th>
+                                <td scope="row" style="text-align: left!important;">{{ itm.1 }}</td>
+                                <td scope="row" style="text-align: left!important;"><a href="{{ itm.2 }}" target="_blank">{{ itm.2 }}</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
     </div>
 </body>
 </html>
