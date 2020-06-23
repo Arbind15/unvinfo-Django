@@ -68,15 +68,17 @@ function searchField() {
             bdy.setAttributeNode(ba);
             num=20;
 
-            var xhttp = new XMLHttpRequest();
-            var url='';
-            xhttp.onreadystatechange = function() {
+            var req = new XMLHttpRequest();
+            var url='/reset';
+            req.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-
+                document.open();
+                document.write(req.response);
+                document.close();
             }
         };
-        xhttp.open("GET", url, true);
-        xhttp.send();
+        req.open("GET", url, true);
+        req.send();
 
         }
 

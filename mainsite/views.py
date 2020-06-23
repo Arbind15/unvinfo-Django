@@ -62,3 +62,19 @@ def Search(request):
                 if num==50:
                     break
     return HttpResponse(json.dumps(lst),'')
+
+def reset(request):
+    # for deployment
+    with open('media/data.csv', 'r') as csv_file:
+    # with open('media/data.csv', 'r', encoding="mbcs") as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        num = 1
+        lst = []
+        for data in csv_reader:
+            data.append(num)
+            lst.append(data)
+            num = num + 1
+            if num == 21:
+                break
+        print('reset')
+    return render(request,'mainsite/home.html',{"list":lst})
