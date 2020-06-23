@@ -1,7 +1,7 @@
 {% load compress %}
 {% load static %}
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -51,20 +51,28 @@
 {#            </div>#}
 {#    </div>#}
 
+
+    <nav class="navbar navbar-dark bg-dark justify-content-end">
+      <div class="form-inline">
+        <input class="form-control mr-sm-2" type="search" onkeypress="Fout()" onkeydown="Fout()" onfocus="searchField()" id="srch_fld" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary my-2 my-sm-0" id="submit_btn">Search</button>
+      </div>
+    </nav>
+
     <div class="container" style="display: flex;">
         <div style="margin: auto!important;">
 
             <table class="table table-hover table-responsive" id="mn_table">
 
                 <thead style="background-color: darkgray!important;">
-                    <tr class="bg-dark text-white">
+                    <tr class="bg-dark text-white table_head">
                         <th scope="col">S.No:</th>
                         <th scope="col" style="text-align: left!important;">University</th>
                         <th scope="col" style="text-align: left!important;">Link</th>
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody id="table_body">
                     {%for itm in list%}
                         <tr data-aos="fade-left">
                             <th scope="row">{{ itm.3 }}</th>
@@ -78,6 +86,8 @@
 
         </div>
     </div>
+
+    <div id="snackbar">Message...</div>
 
     <script>
         AOS.init({
