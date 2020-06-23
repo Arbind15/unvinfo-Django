@@ -12,7 +12,7 @@ function Scrolled() {
           tmp=num;
           var url='/chunks?index='+tmp;
           // alert(num);
-          num=num+5;
+          num=num+10;
           xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var lst=(xhttp.responseText);
@@ -25,7 +25,9 @@ function Scrolled() {
                 for(i=0;i<json.length;i++){
                     // alert(json[i]['value'][3]);
                     var row =table.insertRow(json[i]['value'][3]);
-
+                    row.classList.add('aos-item');
+                    row.setAttribute('data-aos', 'fade-left');
+                    // row.setAttribute('data-aos-anchor-placement', 'bottom-top');
                     var sno= row.insertCell(0);
                     var unv= row.insertCell(1);
                     var lnk= row.insertCell(2);
