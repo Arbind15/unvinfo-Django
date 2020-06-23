@@ -12,7 +12,7 @@ function Scrolled() {
           tmp=num;
           var url='/chunks?index='+tmp;
           // alert(num);
-          num=num+5;
+          num=num+10;
           xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var lst=(xhttp.responseText);

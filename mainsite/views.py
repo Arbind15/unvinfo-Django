@@ -38,7 +38,7 @@ def chunks(request):
             lst.append(tmp)
             num=num+1
             index=index+1
-            if num==5:
+            if num==10:
                 break
         # print(lst)
     return HttpResponse(json.dumps(lst),'')
