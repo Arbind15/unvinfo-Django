@@ -205,11 +205,10 @@ function FileUp() {
         // Percentage of upload completed
         var p_sts=document.getElementsByClassName('p_status')[0];
         var p_lbl=document.getElementById('p_lbl');
-        for (i=0;i<=percent_complete;i++){
-            p_lbl.innerText='Uploading...'+i+'%';
-            p_sts.style='width: '+i+'%;font-size: 15px;';
-            // alert(p_sts);
-        }
+        p_lbl.innerText='Uploading...'+Math.round(percent_complete).toPrecision()+'%';
+        p_sts.style='width: '+Math.round(percent_complete)+'%;font-size: 15px;';
+        // alert(p_sts);
+
         // console.log(percent_complete);
     });
 
@@ -217,6 +216,10 @@ function FileUp() {
         // HTTP status message
         // console.log(req.status);
         document.getElementById('main_pbar').style='display: none';
+        var p_sts=document.getElementsByClassName('p_status')[0];
+        var p_lbl=document.getElementById('p_lbl');
+        p_lbl.innerText='';
+        p_sts.style='width: '+0+'%;font-size: 15px;';
         // request.response will hold the response from the server
         // console.log(req.response);
     });
