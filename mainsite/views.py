@@ -1,6 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import csv, json, itertools, re
+import os
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
+from django.conf import settings
+
 
 def home(request):
     # for deployment
@@ -76,5 +81,18 @@ def reset(request):
             num = num + 1
             if num == 21:
                 break
-        print('reset')
+        # print('reset')
     return render(request,'mainsite/home.html',{"list":lst})
+
+
+def file(request):
+    return render(request, 'mainsite/file.html',{})
+
+def Save_file(request):
+    fil=request.FILES
+    # print(fil['file'].file)
+    # print(fil['file'])
+    data=fil['file'].file
+    path = default_storage.save('data/'+str(fil['file']), ContentFile(data.read()))
+    tmp_file = os.path.join(settings.MEDIA_ROOT, path)
+    return HttpResponse('/media/'+str(path),'')

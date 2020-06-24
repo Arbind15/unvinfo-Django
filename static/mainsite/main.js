@@ -1,3 +1,5 @@
+
+
 var num=20;
 function Scrolled() {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
@@ -72,6 +74,7 @@ function searchField() {
             var url='/reset';
             req.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
+                // console.log(req.response);
                 document.open();
                 document.write(req.response);
                 document.close();
@@ -156,4 +159,84 @@ function message() {
   var x = document.getElementById("snackbar");
   x.className = "show";
   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+
+// document.getElementById('up_fl').onchange = function() {
+//     alert("uploaded");
+// };
+
+function FileUp() {
+
+    document.getElementById('main_pbar').style='display: block;';
+
+    // var files = evt.dataTransfer.files;
+    // var file = files[0];
+    var ipt=document.getElementById('up_fl');
+    var file=ipt.files[0];
+    // alert(file);
+
+    var data = new FormData();
+    var csrftoken = Cookies.get('csrftoken');
+
+    var req = new XMLHttpRequest();
+    // req.responseType="blob";
+    var filename=file.name;
+    var filesize=file.size;
+
+    var csrftoken = getCookie('csrftoken');
+    // alert(csrftoken);
+    // document.cookie= 'filesize=${filesize}';
+    // alert(filesize);
+    data.append('file', file);
+    var url='/save_file';
+    // alert(url);
+    req.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+             // alert(req.response);
+             document.getElementById('propic').src=req.response;
+
+         }
+    };
+
+    req.open("post", url, true);
+    req.setRequestHeader("X-CSRFToken", csrftoken);
+    req.upload.addEventListener('progress', function(e) {
+        var percent_complete = (e.loaded / e.total)*100;
+        // Percentage of upload completed
+        var p_sts=document.getElementsByClassName('p_status')[0];
+        var p_lbl=document.getElementById('p_lbl');
+        for (i=0;i<=percent_complete;i++){
+            p_lbl.innerText='Uploading...'+i+'%';
+            p_sts.style='width: '+i+'%;font-size: 15px;';
+            // alert(p_sts);
+        }
+        // console.log(percent_complete);
+    });
+
+    req.addEventListener('load', function(e) {
+        // HTTP status message
+        // console.log(req.status);
+        document.getElementById('main_pbar').style='display: none';
+        // request.response will hold the response from the server
+        // console.log(req.response);
+    });
+    req.send(data);
+
+}
+
+
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
 }

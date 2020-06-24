@@ -53,3 +53,45 @@
 .highlight {
   background-color: yellow;
 }
+
+.lbl_btn{
+  height: 150px;
+  width: 150px;
+  /*background-color: red;*/
+  border-radius: 75px;
+}
+.lbl_btn:hover{
+  cursor: pointer;
+  opacity: 0.9;
+}
+.form-group{
+
+}
+.mn_div{
+  margin-top: 50px;
+  text-align: center!important;
+  /*background-color: red;*/
+}
+.pbar{
+  height: 5px;
+  background-color: rgba(165,134,182,0.42);
+  border-color: black!important;
+  display: flex;
+  border-radius: 3px;
+  border: 1px;
+}
+
+.p_status{
+  height: 5px;
+  background-color: green;
+  border-radius: 3px;
+  transition: width;
+  transition-duration: 500ms;
+}
+#p_lbl{
+  font-size: 15px!important;
+}
+#main_pbar{
+  display: none;
+  transition-duration: 2s;
+}
