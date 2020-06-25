@@ -70,6 +70,7 @@
 .mn_div{
   margin-top: 50px;
   text-align: center!important;
+  /*display: none;*/
   /*background-color: red;*/
 }
 .pbar{
@@ -94,4 +95,34 @@
 #main_pbar{
   display: none;
   transition-duration: 2s;
+}
+
+.spinner_div{
+  /*background-color: green;*/
+  background-color: rgba(0,0,0,0.7);
+  width: 100%;
+  height: 100%!important;
+  z-index: 1000;
+  position: fixed;
+  margin-top: -50px!important;
+}
+
+.spinner{
+  margin:auto!important;
+  /*background-color: blue;*/
+  height: 50px;
+  border-radius: 50%;
+  border: transparent 5px solid !important;
+  border-top-color: #fef6ff!important;
+  border-top-style: dashed!important;
+  width: 50px;
+  animation: Spinner 1s ease-in-out infinite;
+  transition-duration: 100ms;
+  margin-top: 20%!important;
+}
+
+@keyframes Spinner {
+  to{
+    transform: rotate(360deg);
+  }
 }

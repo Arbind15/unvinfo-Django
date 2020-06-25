@@ -243,3 +243,7 @@ function getCookie(name) {
     }
     return cookieValue;
 }
+
+window.addEventListener('load',function () {
+    document.getElementsByClassName('spinner_div')[0].style='display: none !important;';
+})
